@@ -31,6 +31,28 @@ O projeto realiza as seguintes etapas:
 
 ---
 
+## Como Executar
+
+Para executar o projeto, siga a sequência abaixo:
+
+1. **Criação do Banco de Dados e Tabelas**  
+   Execute o script `create_tables.sql` para criar as tabelas `operadoras` e `demonstracoes_contabeis`.
+
+2. **Importação de Dados**  
+   Execute o script `import_data.sql` para importar os dados dos arquivos CSV (`relatorio_cadop.csv` e arquivos trimestrais de 2023 e 2024) para o banco de dados.
+
+3. **Correção da Data (se necessário)**  
+   Se ocorrer erro ao importar os dados devido ao formato da data, execute o script para corrigir a formatação da data.
+
+4. **Execução das Consultas Analíticas**  
+   Execute o script `analytical_queries.sql` para calcular as 10 operadoras com maiores despesas nos períodos especificados (último trimestre e último ano de 2024).
+
+5. **Consultas Personalizadas**  
+   Após a importação, você pode realizar consultas adicionais diretamente no banco de dados para combinar dados das tabelas `operadoras` e `demonstracoes_contabeis`.
+
+Siga essa sequência para configurar e executar o projeto corretamente.
+
+
 ## Pré-requisitos
 
 Antes de executar o projeto, certifique-se de:
