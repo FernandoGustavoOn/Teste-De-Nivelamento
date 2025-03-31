@@ -41,3 +41,24 @@ Antes de executar o projeto, certifique-se de:
 3. Instale as dependências rodando:
    ```bash
    pip install pdfplumber
+
+## Como Executar
+
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/FernandoGustavoOn/Teste-De-Nivelamento.git
+   cd Teste-De-Nivelamento/Teste2_TransformacaoDados
+   ```
+
+2. Certifique-se de que o PDF `Anexo_I_Rol.pdf` está dentro da pasta `pdfs/`.
+
+3. Execute o script:
+   ```bash
+   python main.py
+   ```
+
+4. Após a execução, o arquivo `anexo_I.csv` será gerado e compactado em `Teste_Fernando.zip`.
+
+5. Verifique os arquivos gerados na pasta do projeto.
+
+---
