@@ -1,43 +1,91 @@
-# Transformação de Dados
+# WebScraping
 
-Este repositório contém o código e os arquivos gerados para o **Teste de Transformação de Dados**. O objetivo é extrair tabelas do PDF "Anexo I - Rol de Procedimentos e Eventos em Saúde", salvá-las em formato estruturado `.csv`, e compactar o resultado em um arquivo `.zip`.
+Este repositório contém o código e os arquivos gerados durante a execução do **Teste de Web Scraping**, solicitado no teste de nivelamento técnico. O objetivo deste projeto é realizar o download dos anexos I e II do site da ANS e compactar os arquivos em um único arquivo `.zip`.
 
 ---
 
-## Objetivos do Projeto
+## Descrição do Projeto
 
-O projeto realiza as seguintes etapas:
-1. **Extração das tabelas do PDF:**
-   - Localiza e extrai as tabelas do documento `Anexo_I_Rol.pdf`.
-   - Processa e limpa os dados extraídos, removendo quebras de linha e espaços desnecessários.
-2. **Substituição de abreviações:**
-   - Coluna "OD" transformada em "Seg. Odontológica".
-   - Coluna "AMB" transformada em "Seg. Ambulatorial".
-3. **Salvamento em `.csv`:**
-   - Todas as tabelas são unificadas em um arquivo `anexo_I.csv`.
-4. **Compactação do arquivo `.csv`:**
-   - O arquivo `anexo_I.csv` é compactado em um arquivo `.zip` denominado `Teste_Fernando.zip`.
+O projeto executa as seguintes etapas:
+1. Acessa o site oficial da ANS.
+   - [Link para o site](https://www.gov.br/ans/pt-br/acesso-a-informacao/participacao-da-sociedade/atualizacao-do-rol-de-procedimentos)
+2. Baixa os PDFs dos anexos I e II.
+3. Compacta os dois arquivos PDF em um único arquivo `.zip`.
 
 ---
 
 ## Estrutura dos Arquivos
 
-- **`transformacao.py`:** Código Python que executa todas as etapas mencionadas.
-- **`pdfs/`:** Contém o PDF usado como entrada.
-  - `Anexo_I_Rol.pdf`: Documento contendo as tabelas a serem extraídas.
-- **`anexo_I.csv`:** Arquivo CSV gerado com os dados estruturados.
-- **`Teste_Fernando.zip`:** Arquivo compactado contendo o CSV.
-- **`README.md`:** Documentação detalhada do projeto.
+- **`scraping.py`:** Código Python que realiza todas as etapas descritas acima.
+- **`anexos/`:** Pasta onde os PDFs baixados são armazenados.
+  - `Anexo_I.pdf`: Primeiro anexo baixado do site.
+  - `Anexo_II.pdf`: Segundo anexo baixado do site.
+- **`compactado.zip`:** Arquivo `.zip` contendo os dois PDFs compactados.
+- **`README.md`:** Documentação do projeto.
 
 ---
 
 ## Pré-requisitos
 
-Antes de executar o projeto, certifique-se de:
-1. Ter o Python 3.7 ou superior instalado.
-2. Instalar as bibliotecas necessárias:
-   - `pdfplumber` para extração de tabelas do PDF.
-   - `csv` e `zipfile` (já incluídas no Python).
-3. Instale as dependências rodando:
-   ```bash
-   pip install pdfplumber
+Antes de executar o projeto, certifique-se de ter instalado:
+- **Python 3.7 ou superior**
+- Bibliotecas necessárias:
+  - `requests` para realizar o download dos arquivos.
+  - `beautifulsoup4` para analisar o HTML.
+  - `wget` para baixar os arquivos.
+  - `shutil` (já incluída no Python) para compactação.
+
+Para instalar as dependências, execute:
+```bash
+pip install -r requirements.txt
+```
+
+Caso o arquivo `requirements.txt` não esteja presente, instale manualmente com:
+```bash
+pip install requests beautifulsoup4 wget
+```
+
+---
+
+## Como Executar
+
+1. Clone este repositório:
+```bash
+git clone https://github.com/FernandoGustavoOn/Teste-De-Nivelamento.git
+```
+
+2. Acesse a pasta do projeto:
+```bash
+cd Teste-De-Nivelamento/Teste2_TransformacaoDados
+```
+
+3. Execute o script:
+```bash
+python scraping.py
+```
+
+Após a execução, os PDFs baixados estarão na pasta `pdfs/`, e o arquivo compactado será gerado como `PDFs_compactados.zip`.
+
+Se desejar executar em um ambiente virtual:
+```bash
+python -m venv venv
+source venv/bin/activate  # Linux/macOS
+venv\Scripts\activate  # Windows
+pip install -r requirements.txt
+python scraping.py
+```
+
+---
+
+## Observações
+
+- Certifique-se de estar conectado à internet para que o script possa acessar o site da ANS.
+- Caso os arquivos não sejam baixados corretamente, verifique se o site da ANS está acessível e se os links dos anexos não foram alterados.
+- O script pode ser adaptado para baixar outros documentos, bastando modificar os critérios de filtragem dos links.
+
+---
+
+## Licença
+
+Este projeto está licenciado sob a MIT License - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
